@@ -9,33 +9,39 @@
   function IndexController(WeatherFactory) {
     var vm = this;
 
+    // Indicate the app has finished loading
+    vm.appHasLoaded = true;
+
     // List of available locations we want to query
     vm.locations = [{
       city: 'London',
       country: 'United Kingdom',
-      name: 'London,uk',
+      countryCode: 'uk',
       weather: null
     }, {
       city: 'Amsterdam',
       country: 'Netherlands',
-      name: 'Amsterdam,nl',
+      countryCode: 'nl',
       weather: null
     }, {
       city: 'Paris',
       country: 'France',
-      name: 'Paris,fr',
+      countryCode: 'fr',
       weather: null
     }, {
       city: 'Berlin',
       country: 'Germany',
-      name: 'Berlin,de',
+      countryCode: 'de',
       weather: null
     }, {
       city: 'Stockholm',
       country: 'Sweden',
-      name: 'Stockholm,se',
+      countryCode: 'se',
       weather: null
     }];
+
+    // Get the current date
+    vm.today = new Date();
 
     // Functions on our view model
     vm.displayWeather = displayWeather;
@@ -47,7 +53,7 @@
 
       // GET weather from API, if not already bound to our object
       if (!loc.weather) {
-        loc.weather = WeatherFactory.getByLocation(loc.name);
+        loc.weather = WeatherFactory.getByLocation(loc);
       }
     }
 

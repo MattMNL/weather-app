@@ -12,13 +12,14 @@
 
     // Define our base options for API calls
     var params = {
-      'appid': '3d8b309701a13f65b660fa2c64cdc517'
+      units: 'metric',
+      appid: '3d8b309701a13f65b660fa2c64cdc517'
     };
 
     // Function that queries the API based on location
     function getByLocation(loc) {
       // Set our query location from provided location object
-      params.q = loc;
+      params.q = loc.city + ',' + loc.countryCode;
 
       // Return our Resource GET object
       return Weather.get(params);

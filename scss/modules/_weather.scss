@@ -1,0 +1,93 @@
+.Weather {
+    color: white;
+    text-shadow: $base-text-shadow;
+    // Header
+    @include e(head) {
+        margin: 50px 0 35px;
+        text-align: center;
+        @include e(city) {
+            font-size: 56px;
+            font-weight: 900;
+            margin: 0 0 20px;
+
+            .icon {
+                font-size: 90%;
+            }
+        }
+        @include e(date) {
+            font-size: 32px;
+            font-weight: 300;
+            color: $light;
+        }
+    }
+    // Current weather data
+    @include e(current) {
+        text-align: right;
+        font-size: 28px;
+        @include e(temp) {
+            position: relative;
+            font-size: 162px;
+            line-height: normal;
+
+            @include e(icon) {
+              position: relative;
+              font-size: 60%;
+              right: -25px;
+            }
+
+            @include e(celsius) {
+                position: absolute;
+                top: -10px;
+                margin-left: -30px;
+                font-size: 80%;
+            }
+        }
+        @include e(windspeed) {
+            color: $light;
+
+            span {
+                font-size: 42px;
+                margin-right: 10px;
+            }
+        }
+    }
+    // Location navigatioon
+    @include e(navigation) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+
+        color: $grey;
+        text-shadow: none;
+
+        width: 100%;
+
+        ul {
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+        }
+
+        @include e(item) {
+            background: white;
+
+            text-align: center;
+            font-size: 28px;
+            font-weight: light;
+            line-height: normal;
+
+            padding: 25px 0;
+
+            flex-grow: 1;
+            flex-basis: 0;
+
+            cursor: pointer;
+
+            &.is-selected {
+              color: white;
+              background: none;
+              text-shadow: $base-text-shadow;
+            }
+        }
+    }
+}

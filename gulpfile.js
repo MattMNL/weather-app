@@ -64,7 +64,7 @@
         // 'js/filters/*.js',
         // 'js/services/*.js',
         'js/factories/*.js',
-        // 'js/components/*.js',
+        'js/components/*.js',
         'js/controllers/*.js'
       ])
       .pipe(changed('build'))

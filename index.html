@@ -1,39 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="bbWeatherApp">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="description" content="Frontend Developer Exercise 2.2. Shows some weather info using AngularJS.">
 
-        <link rel="icon" href="assets/img/favicon.png">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Frontend Developer Exercise 2.2. Shows some weather info using AngularJS.">
 
-        <title>Weather App</title>
+    <link rel="icon" href="assets/img/favicon.png">
 
-        <!-- Minified styles -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="build/app.min.css">
-    </head>
+    <title>Weather App</title>
 
-    <body>
-        <section class="container" ng-controller="IndexController as vm">
-          <a href
-             ng-repeat="location in vm.locations track by $index"
-             ng-click="vm.displayWeather(location)">
-            {{location.name}}
-          </a>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
-          <em ng-if="!vm.selectedLocation.weather">
-            Loading weather for {{location.name}}
-          </em>
+    <!-- Minified styles -->
+    <link rel="stylesheet" type="text/css" href="build/app.min.css">
+</head>
 
-          <ul ng-if="vm.selectedLocation.weather">
-            <li>{{vm.selectedLocation.weather.name}}</li>
-            <li>{{vm.selectedLocation.weather.main.temp}}</li>
-            <li>{{vm.selectedLocation.weather.wind.speed}}</li>
-          </ul>
+<body>
+    <!-- Weather app container -->
+    <main class="Weather app-container selected-{{vm.selectedLocation.countryCode}}" ng-controller="IndexController as vm">
+        <section class="Splash" ng-if="!vm.appHasLoaded"></section>
+        <section class="container" ng-if="vm.appHasLoaded">
+            <!-- Weather app head -->
+            <header class="Weather__head">
+                <h2 class="Weather__head__city">
+                  <div class="row">
+                    <div class="col-xs-5 text-right">
+                      <span class="icon icon-location2"></span>
+                    </div>
+                    <div class="col-xs-7 text-left">
+                      {{vm.selectedLocation.weather.name}}
+                    </div>
+                  </div>
+                </h2>
+
+                <h3 class="Weather__head__date">
+                  {{vm.today | date: 'EEEE, MMMM d y'}}
+                </h3>
+            </header>
+
+            <!-- Weather current data -->
+            <div class="Weather__current">
+                <p class="Weather__current__temp">
+                    <wa-weather-icon icon-id="vm.selectedLocation.weather.weather[0].icon"></wa-weather-icon>
+                    {{vm.selectedLocation.weather.main.temp | number: 0}}
+                    <span class="Weather__current__temp__celsius icon icon-Celsius"></span>
+                </p>
+
+                <p class="Weather__current__windspeed">
+                    <span>{{vm.selectedLocation.weather.wind.speed}}</span> km/h
+                </p>
+            </div>
+
+            <!-- Weather locations menu -->
+            <nav class="Weather__navigation">
+                <ul class="list-unstyled">
+                    <li class="Weather__navigation__item"
+                        ng-repeat="location in vm.locations track by $index"
+                        ng-click="vm.displayWeather(location)"
+                        ng-class="{ 'is-selected': location.city === vm.selectedLocation.city}">
+                        {{location.city}}
+                        {{location.weather.main.temp | number: 0}}
+                    </li>
+                </ul>
+            </nav>
         </section>
+    </main>
 
-        <!-- Minified scripts -->
-        <script type="text/javascript" src="build/app.min.js" async></script>
-    </body>
+    <!-- Minified scripts -->
+    <script type="text/javascript" src="build/app.min.js" async></script>
+</body>
+
 </html>
