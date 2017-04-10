@@ -1,0 +1,13 @@
+::-moz-selection {
+    background: $darkBlue;
+    color: white;
+    text-shadow: none;
+}
+
+::selection {
+    background: $darkBlue;
+    color: white;
+    text-shadow: none;
+}
+
+h1, h2, h3, h4, h5, h6 { word-wrap: break-word; font-family: $header-font-family; font-weight: $header-font-weight; }

@@ -1,0 +1,244 @@
+@import "variables";
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('#{$icomoon-font-path}/icomoon.eot?ja6ecz');
+  src:  url('#{$icomoon-font-path}/icomoon.eot?ja6ecz#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/icomoon.ttf?ja6ecz') format('truetype'),
+    url('#{$icomoon-font-path}/icomoon.woff?ja6ecz') format('woff'),
+    url('#{$icomoon-font-path}/icomoon.svg?ja6ecz#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lightning {
+  &:before {
+    content: $icon-lightning;
+  }
+}
+.icon-cloudy {
+  &:before {
+    content: $icon-cloudy;
+  }
+}
+.icon-weather {
+  &:before {
+    content: $icon-weather;
+  }
+}
+.icon-snowy {
+  &:before {
+    content: $icon-snowy;
+  }
+}
+.icon-snowy2 {
+  &:before {
+    content: $icon-snowy2;
+  }
+}
+.icon-windy {
+  &:before {
+    content: $icon-windy;
+  }
+}
+.icon-windy2 {
+  &:before {
+    content: $icon-windy2;
+  }
+}
+.icon-rainy {
+  &:before {
+    content: $icon-rainy;
+  }
+}
+.icon-rainy2 {
+  &:before {
+    content: $icon-rainy2;
+  }
+}
+.icon-lightning2 {
+  &:before {
+    content: $icon-lightning2;
+  }
+}
+.icon-cloud {
+  &:before {
+    content: $icon-cloud;
+  }
+}
+.icon-cloud2 {
+  &:before {
+    content: $icon-cloud2;
+  }
+}
+.icon-cloudy2 {
+  &:before {
+    content: $icon-cloudy2;
+  }
+}
+.icon-moon {
+  &:before {
+    content: $icon-moon;
+  }
+}
+.icon-sun {
+  &:before {
+    content: $icon-sun;
+  }
+}
+.icon-lightning3 {
+  &:before {
+    content: $icon-lightning3;
+  }
+}
+.icon-cloud3 {
+  &:before {
+    content: $icon-cloud3;
+  }
+}
+.icon-cloudy3 {
+  &:before {
+    content: $icon-cloudy3;
+  }
+}
+.icon-weather2 {
+  &:before {
+    content: $icon-weather2;
+  }
+}
+.icon-snowy3 {
+  &:before {
+    content: $icon-snowy3;
+  }
+}
+.icon-snowy4 {
+  &:before {
+    content: $icon-snowy4;
+  }
+}
+.icon-snowy5 {
+  &:before {
+    content: $icon-snowy5;
+  }
+}
+.icon-windy3 {
+  &:before {
+    content: $icon-windy3;
+  }
+}
+.icon-windy4 {
+  &:before {
+    content: $icon-windy4;
+  }
+}
+.icon-rainy3 {
+  &:before {
+    content: $icon-rainy3;
+  }
+}
+.icon-rainy4 {
+  &:before {
+    content: $icon-rainy4;
+  }
+}
+.icon-lightning4 {
+  &:before {
+    content: $icon-lightning4;
+  }
+}
+.icon-lightning5 {
+  &:before {
+    content: $icon-lightning5;
+  }
+}
+.icon-cloud4 {
+  &:before {
+    content: $icon-cloud4;
+  }
+}
+.icon-lines {
+  &:before {
+    content: $icon-lines;
+  }
+}
+.icon-weather3 {
+  &:before {
+    content: $icon-weather3;
+  }
+}
+.icon-weather4 {
+  &:before {
+    content: $icon-weather4;
+  }
+}
+.icon-weather5 {
+  &:before {
+    content: $icon-weather5;
+  }
+}
+.icon-cloud5 {
+  &:before {
+    content: $icon-cloud5;
+  }
+}
+.icon-cloudy4 {
+  &:before {
+    content: $icon-cloudy4;
+  }
+}
+.icon-snowflake {
+  &:before {
+    content: $icon-snowflake;
+  }
+}
+.icon-wind {
+  &:before {
+    content: $icon-wind;
+  }
+}
+.icon-windy5 {
+  &:before {
+    content: $icon-windy5;
+  }
+}
+.icon-sun2 {
+  &:before {
+    content: $icon-sun2;
+  }
+}
+.icon-moon2 {
+  &:before {
+    content: $icon-moon2;
+  }
+}
+.icon-sun3 {
+  &:before {
+    content: $icon-sun3;
+  }
+}
+.icon-sunrise {
+  &:before {
+    content: $icon-sunrise;
+  }
+}
+.icon-location2 {
+  &:before {
+    content: $icon-location2;
+  }
+}
+

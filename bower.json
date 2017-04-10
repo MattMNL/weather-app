@@ -1,0 +1,26 @@
+{
+  "name": "bb-weather-app",
+  "version": "1.0.0",
+  "description": "Frontend Developer Exercise 2.2",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.4",
+    "bootstrap": "3.3.7",
+    "angular-route": "1.6.4",
+    "angular-resource": "^1.6.4"
+  },
+  "keywords": [
+    "Backbase",
+    "Weather",
+    "Angular"
+  ],
+  "author": "Matthijs Molhoek",
+  "license": "MIT"
+}

@@ -1,0 +1,17 @@
+body {
+    background-color: $superLight;
+
+    font-size: $base-font-size;
+    font-family: $base-font-family;
+    font-weight: $regular;
+
+    line-height: $base-line-height;
+    color: $grey;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    img {
+      max-width: 100%;
+    }
+}

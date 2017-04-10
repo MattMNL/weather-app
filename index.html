@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bbWeatherApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Frontend Developer Exercise 2.2. Shows some weather info using AngularJS.">
+
+        <link rel="icon" href="assets/img/favicon.png">
+
+        <title>Weather App</title>
+
+        <!-- Minified styles -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="build/app.min.css">
+    </head>
+
+    <body>
+        <section class="container" ng-controller="IndexController as vm">
+          <a href
+             ng-repeat="location in vm.locations track by $index"
+             ng-click="vm.displayWeather(location)">
+            {{location.name}}
+          </a>
+
+          <em ng-if="!vm.selectedLocation.weather">
+            Loading weather for {{location.name}}
+          </em>
+
+          <ul ng-if="vm.selectedLocation.weather">
+            <li>{{vm.selectedLocation.weather.name}}</li>
+            <li>{{vm.selectedLocation.weather.main.temp}}</li>
+            <li>{{vm.selectedLocation.weather.wind.speed}}</li>
+          </ul>
+        </section>
+
+        <!-- Minified scripts -->
+        <script type="text/javascript" src="build/app.min.js" async></script>
+    </body>
+</html>
