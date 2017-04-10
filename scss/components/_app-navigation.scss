@@ -1,0 +1,53 @@
+.Weather {
+    // Location navigatioon
+    @include e(navigation) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        color: $grey;
+        text-shadow: none;
+        width: 100%;
+
+        ul {
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+        }
+        @include e(item) {
+            background: white;
+            text-align: center;
+            font-size: 22px;
+            font-weight: thin;
+            line-height: normal;
+            padding: 5px 25px;
+            flex-grow: 1;
+            flex-basis: 0;
+            cursor: pointer;
+
+            &.is-selected {
+                color: white;
+                background: none;
+                text-shadow: $base-text-shadow;
+            }
+            @include e(city) {
+                font-size: 28px;
+            }
+
+            .Weather-icon {
+                position: relative;
+                right: 10px;
+                top: 2px;
+                font-size: 125%;
+            }
+            @include e(temp) {
+                font-size: 62px;
+                margin: 0;
+                @include e(celsius) {
+                    position: relative;
+                    top: -9px;
+                    margin-left: -25px;
+                }
+            }
+        }
+    }
+}

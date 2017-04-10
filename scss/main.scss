@@ -17,3 +17,10 @@
 @import "modules/app";
 @import "modules/splash";
 @import "modules/weather";
+
+// Components
+@import "components/app-header";
+@import "components/app-navigation";
+@import "components/weather-forecast";
+@import "components/weather-current";
+@import "components/weather-icon";

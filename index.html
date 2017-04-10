@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Frontend Developer Exercise 2.2. Shows some weather info using AngularJS.">
 
-    <link rel="icon" href="assets/img/favicon.png">
-
     <title>Weather App</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
@@ -22,48 +20,22 @@
         <section class="Splash" ng-if="!vm.appHasLoaded"></section>
         <section class="container" ng-if="vm.appHasLoaded">
             <!-- Weather app head -->
-            <header class="Weather__head">
-                <h2 class="Weather__head__city">
-                  <div class="row">
-                    <div class="col-xs-5 text-right">
-                      <span class="icon icon-location2"></span>
-                    </div>
-                    <div class="col-xs-7 text-left">
-                      {{vm.selectedLocation.weather.name}}
-                    </div>
-                  </div>
-                </h2>
+            <wa-app-header selected-location="vm.selectedLocation"></wa-app-header>
 
-                <h3 class="Weather__head__date">
-                  {{vm.today | date: 'EEEE, MMMM d y'}}
-                </h3>
-            </header>
+            <div class="row">
+              <div class="col-sm-8">
+                <!-- Weather foreast -->
+                <wa-weather-forecast selected-location="vm.selectedLocation"></wa-weather-forecast>
+              </div>
 
-            <!-- Weather current data -->
-            <div class="Weather__current">
-                <p class="Weather__current__temp">
-                    <wa-weather-icon icon-id="vm.selectedLocation.weather.weather[0].icon"></wa-weather-icon>
-                    {{vm.selectedLocation.weather.main.temp | number: 0}}
-                    <span class="Weather__current__temp__celsius icon icon-Celsius"></span>
-                </p>
-
-                <p class="Weather__current__windspeed">
-                    <span>{{vm.selectedLocation.weather.wind.speed}}</span> km/h
-                </p>
+              <div class="col-sm-4">
+                <!-- Weather current data -->
+                <wa-current-weather selected-location="vm.selectedLocation"></wa-current-weather>
+              </div>
             </div>
 
             <!-- Weather locations menu -->
-            <nav class="Weather__navigation">
-                <ul class="list-unstyled">
-                    <li class="Weather__navigation__item"
-                        ng-repeat="location in vm.locations track by $index"
-                        ng-click="vm.displayWeather(location)"
-                        ng-class="{ 'is-selected': location.city === vm.selectedLocation.city}">
-                        {{location.city}}
-                        {{location.weather.main.temp | number: 0}}
-                    </li>
-                </ul>
-            </nav>
+            <wa-app-navigation selected-location="vm.selectedLocation" on-click="vm.displayWeather"></wa-app-navigation>
         </section>
     </main>
 

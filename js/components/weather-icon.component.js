@@ -7,10 +7,12 @@
     bindings: {
       iconId: '<'
     },
-    template: `<span class="Weather__current__temp__icon icon icon-{{$ctrl.currentIcon}}"></span>`,
+    template: `<span class="Weather-icon icon icon-{{$ctrl.currentIcon}}"></span>`,
     controller: function() {
+      var vm = this;
+
       // Define mapping for icon code supplied by weather API
-      this.iconMapping = {
+      vm.iconMapping = {
         '01d': 'sun',
         '01n': 'moon',
         '02d': 'cloudy',
@@ -32,10 +34,10 @@
       };
 
       // Wait for binding changes, since some async data needs to be loaded
-      this.$onChanges = function(changesObj) {
+      vm.$onChanges = function(changesObj) {
         if (changesObj.iconId) {
           // Get current icon from map based on icon id
-          this.currentIcon = this.iconMapping[this.iconId];
+          vm.currentIcon = vm.iconMapping[vm.iconId];
         }
       };
     }

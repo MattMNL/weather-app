@@ -4,44 +4,16 @@
   angular.module('bbWeatherApp')
     .controller('IndexController', IndexController);
 
-  IndexController.$inject = ['WeatherFactory'];
+  IndexController.$inject = ['LocationService', 'WeatherFactory'];
 
-  function IndexController(WeatherFactory) {
+  function IndexController(LocationService, WeatherFactory) {
     var vm = this;
 
     // Indicate the app has finished loading
     vm.appHasLoaded = true;
 
-    // List of available locations we want to query
-    vm.locations = [{
-      city: 'London',
-      country: 'United Kingdom',
-      countryCode: 'uk',
-      weather: null
-    }, {
-      city: 'Amsterdam',
-      country: 'Netherlands',
-      countryCode: 'nl',
-      weather: null
-    }, {
-      city: 'Paris',
-      country: 'France',
-      countryCode: 'fr',
-      weather: null
-    }, {
-      city: 'Berlin',
-      country: 'Germany',
-      countryCode: 'de',
-      weather: null
-    }, {
-      city: 'Stockholm',
-      country: 'Sweden',
-      countryCode: 'se',
-      weather: null
-    }];
-
-    // Get the current date
-    vm.today = new Date();
+    // Get list of available locations from service
+    vm.locations = LocationService.getLocations();
 
     // Functions on our view model
     vm.displayWeather = displayWeather;
@@ -53,7 +25,11 @@
 
       // GET weather from API, if not already bound to our object
       if (!loc.weather) {
-        loc.weather = WeatherFactory.getByLocation(loc);
+        loc.weather = WeatherFactory.getWeather(loc);
+      }
+      if (!loc.forecast) {
+        loc.forecast = WeatherFactory.getForecast(loc);
+        console.log(loc.forecast);
       }
     }
 

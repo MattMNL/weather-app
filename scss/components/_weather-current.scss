@@ -1,0 +1,33 @@
+.Weather {
+    // Current weather data
+    @include e(current) {
+        text-align: right;
+        font-size: 28px;
+        @include e(temp) {
+            position: relative;
+            font-size: 162px;
+            line-height: normal;
+
+            .Weather-icon {
+              position: relative;
+              font-size: 60%;
+              right: -25px;
+            }
+
+            @include e(celsius) {
+                position: absolute;
+                top: -10px;
+                margin-left: -30px;
+                font-size: 80%;
+            }
+        }
+        @include e(windspeed) {
+            color: $light;
+
+            span {
+                font-size: 42px;
+                margin-right: 10px;
+            }
+        }
+    }
+}

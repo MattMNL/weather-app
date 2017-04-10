@@ -1,0 +1,21 @@
+.Weather {
+    // Header
+    @include e(head) {
+        margin: 50px 0 35px;
+        text-align: center;
+        @include e(city) {
+            font-size: 56px;
+            font-weight: 900;
+            margin: 0 0 20px;
+
+            .icon {
+                font-size: 90%;
+            }
+        }
+        @include e(date) {
+            font-size: 32px;
+            font-weight: 300;
+            color: $light;
+        }
+    }
+}
