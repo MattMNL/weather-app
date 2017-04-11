@@ -4,9 +4,7 @@
   // wa-app-header component structure
   var waAppHeader = {
     transclude: true,
-    bindings: {
-      selectedLocation: '<'
-    },
+    bindings: {},
     template: `<header class="Weather__head">
         <h2 class="Weather__head__city">
           <div class="row">
@@ -23,11 +21,19 @@
           {{$ctrl.today | date: 'EEEE, MMMM d y'}}
         </h3>
     </header>`,
-    controller: function() {
+    controller: function(LocationService) {
       var vm = this;
 
       // Get the current date
       vm.today = new Date();
+
+      // Get the currently selected location
+      vm.selectedLocation = LocationService.getSelectedLocation();
+
+      // Register callback for selected location update
+      LocationService.registerLocationUpdate(function(location) {
+        vm.selectedLocation = location;
+      });
     }
   };
 

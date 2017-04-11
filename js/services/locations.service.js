@@ -4,45 +4,82 @@
   angular.module('bbWeatherApp')
     .service('LocationService', LocationService);
 
-  LocationService.$inject = [];
+  LocationService.$inject = ['WeatherFactory'];
 
-  function LocationService() {
+  function LocationService(WeatherFactory) {
     // List of available locations we want to query
     var locations = [{
+      id: 2643743,
       city: 'London',
       country: 'United Kingdom',
-      countryCode: 'uk',
+      countryCode: 'gb',
       weather: null
     }, {
+      id: 2759794,
       city: 'Amsterdam',
       country: 'Netherlands',
       countryCode: 'nl',
       weather: null
     }, {
+      id: 6455259,
       city: 'Paris',
       country: 'France',
       countryCode: 'fr',
       weather: null
     }, {
+      id: 2950159,
       city: 'Berlin',
       country: 'Germany',
       countryCode: 'de',
       weather: null
     }, {
+      id: 2673730,
       city: 'Stockholm',
       country: 'Sweden',
       countryCode: 'se',
       weather: null
     }];
 
-    // Function that queries the API to get current weather based on location
+    // Set the currently selected location
+    var selectedLocation = locations[0];
+
+    // Register location update callbacks
+    var locationUpdateCallbacks = [];
+
+    // Function that returns all availale locations
     function getLocations() {
       return locations;
     }
 
+    // Function that returns the currently selected location
+    function getSelectedLocation() {
+      return selectedLocation;
+    }
+
+    // Function that returns the currently selected location
+    function setSelectedLocation(location) {
+      selectedLocation = location;
+      _doCallbacks();
+    }
+
+    // Function that registers a newly supplied observer callback
+    function registerLocationUpdate(callback) {
+      locationUpdateCallbacks.push(callback);
+    }
+
+    // Function that triggers all register location update callbacks and provides newly selected location
+    function _doCallbacks() {
+      angular.forEach(locationUpdateCallbacks, function(callback) {
+        callback(selectedLocation);
+      });
+    }
+
     // Return available functions for this service
     return {
-      getLocations: getLocations
+      getLocations: getLocations,
+      getSelectedLocation: getSelectedLocation,
+      setSelectedLocation: setSelectedLocation,
+      registerLocationUpdate: registerLocationUpdate
     };
   }
 })();

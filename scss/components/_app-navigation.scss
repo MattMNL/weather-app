@@ -35,8 +35,8 @@
 
             .Weather-icon {
                 position: relative;
-                right: 10px;
-                top: 2px;
+                right: 5px;
+                top: 5px;
                 font-size: 125%;
             }
             @include e(temp) {

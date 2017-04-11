@@ -55,10 +55,8 @@
   // Set uglify to mangle: false to avoid problems with angular code
   gulp.task('script', function() {
     return gulp
-      .src(['bower_components/jquery/dist/jquery.min.js',
-        'bower_components/bootstrap/dist/js/bootstrap.min.js',
+      .src([
         'bower_components/angular/angular.min.js',
-        'bower_components/angular-route/angular-route.min.js',
         'bower_components/angular-resource/angular-resource.min.js',
         'js/app.js',
         // 'js/filters/*.js',

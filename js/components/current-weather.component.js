@@ -4,9 +4,7 @@
   // wa-current-weather component structure
   var waCurrentWeather = {
     transclude: true,
-    bindings: {
-      selectedLocation: '<'
-    },
+    bindings: {},
     template: `<div class="Weather__current">
         <p class="Weather__current__temp">
             <wa-weather-icon icon-id="$ctrl.selectedLocation.weather.weather[0].icon"></wa-weather-icon>
@@ -18,8 +16,30 @@
             <span>{{$ctrl.selectedLocation.weather.wind.speed}}</span> km/h
         </p>
     </div>`,
-    controller: function() {
+    controller: function(LocationService, WeatherFactory) {
       var vm = this;
+
+      // Get the currently selected location
+      vm.selectedLocation = LocationService.getSelectedLocation();
+
+      // Functions on our view model
+      vm.getCurrentWeather = getCurrentWeather;
+
+      // Function that loads weather based on provided location
+      function getCurrentWeather(location) {
+        // GET weather from API, if not already bound to our object
+        if (!location.weather) {
+          location.weather = WeatherFactory.getWeather(location);
+        }
+      }
+
+      // Register callback for selected location update
+      LocationService.registerLocationUpdate(function(location) {
+        vm.selectedLocation = location;
+        getCurrentWeather(vm.selectedLocation);
+      });
+
+      getCurrentWeather(vm.selectedLocation);
     }
   };
 

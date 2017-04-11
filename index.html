@@ -20,22 +20,22 @@
         <section class="Splash" ng-if="!vm.appHasLoaded"></section>
         <section class="container" ng-if="vm.appHasLoaded">
             <!-- Weather app head -->
-            <wa-app-header selected-location="vm.selectedLocation"></wa-app-header>
+            <wa-app-header></wa-app-header>
 
             <div class="row">
               <div class="col-sm-8">
                 <!-- Weather foreast -->
-                <wa-weather-forecast selected-location="vm.selectedLocation"></wa-weather-forecast>
+                <wa-weather-forecast></wa-weather-forecast>
               </div>
 
               <div class="col-sm-4">
                 <!-- Weather current data -->
-                <wa-current-weather selected-location="vm.selectedLocation"></wa-current-weather>
+                <wa-current-weather></wa-current-weather>
               </div>
             </div>
 
             <!-- Weather locations menu -->
-            <wa-app-navigation selected-location="vm.selectedLocation" on-click="vm.displayWeather"></wa-app-navigation>
+            <wa-app-navigation></wa-app-navigation>
         </section>
     </main>
 

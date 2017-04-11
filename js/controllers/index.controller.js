@@ -9,31 +9,49 @@
   function IndexController(LocationService, WeatherFactory) {
     var vm = this;
 
-    // Indicate the app has finished loading
-    vm.appHasLoaded = true;
-
     // Get list of available locations from service
     vm.locations = LocationService.getLocations();
 
+    // Get the currently selected location
+    vm.selectedLocation = LocationService.getSelectedLocation();
+
     // Functions on our view model
-    vm.displayWeather = displayWeather;
+    vm.loadWeatherDataForLocations = loadWeatherDataForLocations;
 
-    // Function that loads weather based on provided location
-    function displayWeather(loc) {
-      // Set newly selected location on view model
-      vm.selectedLocation = loc;
+    // Function that loads initial weather data for all locations
+    function loadWeatherDataForLocations() {
+      var locationIds = '';
 
-      // GET weather from API, if not already bound to our object
-      if (!loc.weather) {
-        loc.weather = WeatherFactory.getWeather(loc);
-      }
-      if (!loc.forecast) {
-        loc.forecast = WeatherFactory.getForecast(loc);
-        console.log(loc.forecast);
-      }
+      // Construct comma seperated string of ID's to query
+      angular.forEach(vm.locations, function(location) {
+        locationIds += location.id + ',';
+      });
+
+      // Remove trailing comma
+      locationIds = locationIds.substring(0, locationIds.length - 1);
+
+      // Get grouped weather info from weather API
+      return WeatherFactory.getWeatherByGroup(locationIds).$promise
+        .then(function(res) {
+          // Apply weather data back to locations by id
+          angular.forEach(res.list, function(weather) {
+            vm.locations.find(function(location) {
+              if (location.id === weather.id) {
+                location.weather = weather;
+              }
+            });
+          });
+
+          // Indicate the app has finished loading
+          vm.appHasLoaded = true;
+        });
     }
 
-    // On init, load the weather of our first location in the list of locations
-    displayWeather(vm.locations[0]);
+    // Register callback for selected location update
+    LocationService.registerLocationUpdate(function(location) {
+      vm.selectedLocation = location;
+    });
+
+    loadWeatherDataForLocations();
   }
 })();
