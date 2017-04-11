@@ -4,9 +4,9 @@
   angular.module('bbWeatherApp')
     .service('LocationService', LocationService);
 
-  LocationService.$inject = ['WeatherFactory'];
+  LocationService.$inject = [];
 
-  function LocationService(WeatherFactory) {
+  function LocationService() {
     // List of available locations we want to query
     var locations = [{
       id: 2643743,
@@ -56,7 +56,7 @@
       return selectedLocation;
     }
 
-    // Function that returns the currently selected location
+    // Function that sets the selected location to provided location
     function setSelectedLocation(location) {
       selectedLocation = location;
       _doCallbacks();

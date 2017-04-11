@@ -3,6 +3,11 @@
     @include e(head) {
         margin: 50px 0 35px;
         text-align: center;
+
+        @include mobile {
+            margin-bottom: 10px;
+        }
+
         @include e(city) {
             font-size: 56px;
             font-weight: 900;
@@ -10,12 +15,23 @@
 
             .icon {
                 font-size: 90%;
+                @include mobile {
+                    margin: 0 -20px;
+                }
+            }
+
+            @include mobile {
+                font-size: 42px;
             }
         }
+
         @include e(date) {
             font-size: 32px;
             font-weight: 300;
             color: $light;
+            @include mobile {
+                font-size: 22px;
+            }
         }
     }
 }

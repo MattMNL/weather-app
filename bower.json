@@ -12,10 +12,8 @@
   ],
   "dependencies": {
     "angular": "1.6.4",
-    "bootstrap": "3.3.7",
-    "angular-route": "1.6.4",
     "angular-resource": "^1.6.4",
-    "underscore": "^1.8.3"
+    "bootstrap": "3.3.7"
   },
   "keywords": [
     "Backbase",

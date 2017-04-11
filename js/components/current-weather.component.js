@@ -16,30 +16,16 @@
             <span>{{$ctrl.selectedLocation.weather.wind.speed}}</span> km/h
         </p>
     </div>`,
-    controller: function(LocationService, WeatherFactory) {
+    controller: function(LocationService) {
       var vm = this;
 
       // Get the currently selected location
       vm.selectedLocation = LocationService.getSelectedLocation();
 
-      // Functions on our view model
-      vm.getCurrentWeather = getCurrentWeather;
-
-      // Function that loads weather based on provided location
-      function getCurrentWeather(location) {
-        // GET weather from API, if not already bound to our object
-        if (!location.weather) {
-          location.weather = WeatherFactory.getWeather(location);
-        }
-      }
-
       // Register callback for selected location update
       LocationService.registerLocationUpdate(function(location) {
         vm.selectedLocation = location;
-        getCurrentWeather(vm.selectedLocation);
       });
-
-      getCurrentWeather(vm.selectedLocation);
     }
   };
 

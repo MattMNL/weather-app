@@ -5,9 +5,10 @@
   var waWeatherForecast = {
     transclude: true,
     bindings: {},
-    template: `<div class="Weather__forecast">
+    template: `<div class="Weather__forecast" ng-class="{ 'is-loaded': $ctrl.selectedLocation.forecast }">
         <ul class="list-unstyled">
-          <li class="Weather__forecast__item" ng-repeat="forecast in $ctrl.selectedLocation.forecast.list | limitTo: $ctrl.limiter track by $index">
+          <li class="Weather__forecast__item"
+              ng-repeat="forecast in $ctrl.selectedLocation.forecast.list | limitTo: $ctrl.limiter track by $index">
             <span class="Weather__forecast__item__label">{{$ctrl.formatToDate(forecast.dt_txt) | date: 'h a'}}</span>
 
             <wa-weather-icon icon-id="forecast.weather[0].icon"></wa-weather-icon>
@@ -41,6 +42,7 @@
 
       // Function that formats a supplied date to a JS Date
       function formatToDate(date) {
+        date = date.replace(' ', 'T');
         return new Date(date);
       }
 

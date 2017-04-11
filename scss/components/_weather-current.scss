@@ -3,26 +3,41 @@
     @include e(current) {
         text-align: right;
         font-size: 28px;
+
+        @include mobile {
+            text-align: left;
+            margin: 50px 0;
+        }
+
         @include e(temp) {
             position: relative;
             font-size: 162px;
             line-height: normal;
 
+            @include mobile {
+                font-size: 110px;
+            }
+
             .Weather-icon {
-              position: relative;
-              font-size: 60%;
-              right: -25px;
+                position: relative;
+                font-size: 60%;
+                right: -25px;
             }
 
             @include e(celsius) {
                 position: absolute;
                 top: -10px;
+                
                 margin-left: -30px;
                 font-size: 80%;
             }
         }
+
         @include e(windspeed) {
             color: $light;
+            @include mobile {
+                text-align: center;
+            }
 
             span {
                 font-size: 42px;

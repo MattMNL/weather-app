@@ -19,26 +19,22 @@
       appid: '3d8b309701a13f65b660fa2c64cdc517'
     };
 
-    // Function that constructs our query params from provided location object
-    var _constructQueryParams = function(loc) {
-      params.id = loc.id;
-      return params;
-    };
-
     // Function that queries the API to get current weather based on location
-    function getWeather(loc) {
-      return Weather.get(_constructQueryParams(loc));
+    function getWeather(location) {
+      params.id = location.id;
+      return Weather.get(params);
     }
 
     // Function that queries the API to get current weather based on location
-    function getWeatherByGroup(ids) {
-      params.id = ids;
+    function getWeatherByGroup(group) {
+      params.id = group;
       return WeatherGroup.get(params);
     }
 
     // Function that queries the API to get the weather forecast based on location
-    function getForecast(loc) {
-      return WeatherForecast.get(_constructQueryParams(loc));
+    function getForecast(location) {
+      params.id = location.id;
+      return WeatherForecast.get(params);
     }
 
     // Return available functions for this factory

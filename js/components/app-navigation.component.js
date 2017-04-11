@@ -21,7 +21,7 @@
                   <span class="Weather__navigation__item__temp__celsius icon icon-Celsius"></span>
                 </p>
 
-                <p class="text-right">{{location.weather.wind.speed}} km/h</p>
+                <p class="Weather__navigation__item__wind">{{location.weather.wind.speed}} km/h</p>
             </li>
         </ul>
     </nav>`,

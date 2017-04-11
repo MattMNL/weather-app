@@ -8,6 +8,8 @@
 
     <title>Weather App</title>
 
+    <link rel="icon" href="assets/img/favicon.png">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
     <!-- Minified styles -->
@@ -17,21 +19,23 @@
 <body>
     <!-- Weather app container -->
     <main class="Weather app-container selected-{{vm.selectedLocation.countryCode}}" ng-controller="IndexController as vm">
+        <!--  Splash loader-->
         <section class="Splash" ng-if="!vm.appHasLoaded"></section>
+
         <section class="container" ng-if="vm.appHasLoaded">
             <!-- Weather app head -->
             <wa-app-header></wa-app-header>
 
             <div class="row">
-              <div class="col-sm-8">
-                <!-- Weather foreast -->
-                <wa-weather-forecast></wa-weather-forecast>
-              </div>
+                <div class="col-sm-8">
+                    <!-- Weather foreast -->
+                    <wa-weather-forecast></wa-weather-forecast>
+                </div>
 
-              <div class="col-sm-4">
-                <!-- Weather current data -->
-                <wa-current-weather></wa-current-weather>
-              </div>
+                <div class="col-sm-4">
+                    <!-- Weather current info -->
+                    <wa-current-weather></wa-current-weather>
+                </div>
             </div>
 
             <!-- Weather locations menu -->
