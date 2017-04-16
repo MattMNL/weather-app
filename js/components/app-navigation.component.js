@@ -37,19 +37,14 @@
       // Functions on our view model
       vm.toggleLocation = toggleLocation;
 
-      // Function that loads weather based on provided location
+      // Function that toggles new selected location
       function toggleLocation(location) {
         // Set newly selected location on view model
+        vm.selectedLocation = location;
+
+        // Set newly selected location on service
         LocationService.setSelectedLocation(location);
       }
-
-      // Register callback for selected location update
-      LocationService.registerLocationUpdate(function(location) {
-        vm.selectedLocation = location;
-      });
-
-      // On init, load the weather of our first location in the list of locations
-      toggleLocation(LocationService.getSelectedLocation());
     }
   };
 

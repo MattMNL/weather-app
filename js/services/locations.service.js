@@ -46,7 +46,7 @@
     // Register location update callbacks
     var locationUpdateCallbacks = [];
 
-    // Function that returns all availale locations
+    // Function that returns all available locations
     function getLocations() {
       return locations;
     }

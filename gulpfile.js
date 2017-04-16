@@ -59,7 +59,7 @@
         'bower_components/angular/angular.min.js',
         'bower_components/angular-resource/angular-resource.min.js',
         'js/app.js',
-        // 'js/filters/*.js',
+        'js/filters/*.js',
         'js/services/*.js',
         'js/factories/*.js',
         'js/components/*.js',
@@ -69,7 +69,7 @@
       .pipe(plumber())
       .pipe(jshint())
       .pipe(concat('app.min.js'))
-      /* .pipe(uglify({mangle: false})) */
+      // .pipe(uglify({mangle: false}))
       .on('error', function(err) {
         gutil.log(err);
         this.emit('end');

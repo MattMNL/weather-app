@@ -22,7 +22,7 @@
     function loadWeatherDataForLocations() {
       var locationIds = '';
 
-      // Construct comma seperated string of ID's to query
+      // Construct comma seperated string of IDs to query
       angular.forEach(vm.locations, function(location) {
         locationIds += location.id + ',';
       });

@@ -5,7 +5,8 @@
   "main": "index.html",
   "dependencies": {
     "gulp": "3.9.1",
-    "gulp-bower": "0.0.13"
+    "gulp-bower": "0.0.13",
+    "jshint": "^2.9.4"
   },
   "devDependencies": {
     "bower": "1.8.0",

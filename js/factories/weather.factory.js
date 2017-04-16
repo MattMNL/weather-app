@@ -7,7 +7,7 @@
   WeatherFactory.$inject = ['$resource'];
 
   function WeatherFactory($resource) {
-    // Setup base Resource URL for Open Weather API
+    // Setup base Resource URLs for Open Weather API
     var api = 'http://api.openweathermap.org/data/2.5/';
     var Weather = $resource(api + 'weather');
     var WeatherGroup = $resource(api + 'group');
@@ -25,7 +25,7 @@
       return Weather.get(params);
     }
 
-    // Function that queries the API to get current weather based on location
+    // Function that queries the API to get current weather for multiple locations
     function getWeatherByGroup(group) {
       params.id = group;
       return WeatherGroup.get(params);
