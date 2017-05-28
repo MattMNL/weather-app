@@ -9,9 +9,11 @@
   var changed = require('gulp-changed'); // Filters src to only pass changed files
   var sass = require('gulp-sass'); // Sass compatibility package
   var minifyCSS = require('gulp-minify-css'); // CSS minification
+  var htmlmin = require('gulp-htmlmin'); // gulp plugin to minify HTML
   var autoprefixer = require('gulp-autoprefixer'); // CSS autoprefixer
   var rename = require('gulp-rename'); // Package for renaming files
   var concat = require('gulp-concat'); // File concatenation
+  var babel = require('gulp-babel'); // Babel package
   var uglify = require('gulp-uglify'); // JS uglify package
   var jshint = require('gulp-jshint'); // JSHint package for error logging
   var plumber = require('gulp-plumber'); // Plumber keeps gulp running after CSS/JS errors
@@ -26,7 +28,6 @@
       },
       logLevel: 'debug',
     });
-    gulp.watch(['*.html', 'templates/**/*.html']).on('change', reload);
   });
 
   // All tasks related to styles
@@ -69,11 +70,29 @@
       .pipe(plumber())
       .pipe(jshint())
       .pipe(concat('app.min.js'))
-      // .pipe(uglify({mangle: false}))
+      // .pipe(babel({
+      //   presets: ['es2015']
+      // }))
+      // .pipe(uglify({
+      //   mangle: false
+      // }))
       .on('error', function(err) {
         gutil.log(err);
         this.emit('end');
       })
+      .pipe(gulp.dest('build'))
+      .pipe(reload({
+        stream: true
+      }));
+  });
+
+  // All tasks related to HTML
+  gulp.task('html', function() {
+    return gulp
+      .src('*.html')
+      .pipe(htmlmin({
+        collapseWhitespace: true
+      }))
       .pipe(gulp.dest('build'))
       .pipe(reload({
         stream: true
@@ -117,9 +136,10 @@
   // Watch tasks
   gulp.task('watch', function() {
     gulp.watch('scss/**/*', ['sass']);
-    gulp.watch('js/**/*', ['script']).on('change', reload);
+    gulp.watch('js/**/*', ['script']);
+    gulp.watch(['**/*.html'], ['html']);
   });
 
   // Default gulp run tasks
-  gulp.task('default', ['sass', 'script', 'image', 'browser-sync', 'watch']);
+  gulp.task('default', ['sass', 'script', 'html', 'image', 'browser-sync', 'watch']);
 })();

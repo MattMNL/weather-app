@@ -53,4 +53,13 @@
     &.selected-se {
         background-image: url('../assets/img/bg-stockholm.jpg');
     }
+
+    // Preload bg images to prevent flickering
+    &:before {
+      display: none;
+      background-image: url('../assets/img/bg-ams.jpg'),
+                        url('../assets/img/bg-paris.jpg'),
+                        url('../assets/img/bg-berlin.jpg'),
+                        url('../assets/img/bg-stockholm.jpg');
+    }
 }

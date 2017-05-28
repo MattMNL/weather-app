@@ -2,49 +2,49 @@
 <html lang="en" ng-app="bbWeatherApp">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Frontend Developer Exercise 2.2. Shows some weather info using AngularJS.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Frontend Developer Exercise 2.2. Shows some weather info using AngularJS.">
 
-    <title>Weather App</title>
+  <title>Weather App</title>
 
-    <link rel="icon" href="assets/img/favicon.png">
+  <link rel="icon" href="assets/img/favicon.png">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
-    <!-- Minified styles -->
-    <link rel="stylesheet" type="text/css" href="build/app.min.css">
+  <!-- Minified styles -->
+  <link rel="stylesheet" type="text/css" href="build/app.min.css">
 </head>
 
 <body>
-    <!-- Weather app container -->
-    <main class="Weather app-container selected-{{vm.selectedLocation.countryCode}}" ng-controller="IndexController as vm">
-        <!--  Splash loader-->
-        <section class="Splash" ng-if="!vm.appHasLoaded"></section>
+  <!-- Weather app container -->
+  <main class="Weather app-container selected-{{vm.selectedLocation.countryCode}}" ng-controller="IndexController as vm">
+    <!--  Splash loader-->
+    <section class="Splash" ng-if="!vm.appHasLoaded"></section>
 
-        <section class="container" ng-if="vm.appHasLoaded">
-            <!-- Weather app head -->
-            <wa-app-header></wa-app-header>
+    <section class="container" ng-if="vm.appHasLoaded">
+      <!-- Weather app head -->
+      <wa-app-header></wa-app-header>
 
-            <div class="row">
-                <div class="col-sm-8">
-                    <!-- Weather foreast -->
-                    <wa-weather-forecast></wa-weather-forecast>
-                </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <!-- Weather foreast -->
+          <wa-weather-forecast></wa-weather-forecast>
+        </div>
 
-                <div class="col-sm-4">
-                    <!-- Weather current info -->
-                    <wa-current-weather></wa-current-weather>
-                </div>
-            </div>
+        <div class="col-sm-4">
+          <!-- Weather current info -->
+          <wa-current-weather></wa-current-weather>
+        </div>
+      </div>
 
-            <!-- Weather locations menu -->
-            <wa-app-navigation></wa-app-navigation>
-        </section>
-    </main>
+      <!-- Weather locations menu -->
+      <wa-app-navigation></wa-app-navigation>
+    </section>
+  </main>
 
-    <!-- Minified scripts -->
-    <script type="text/javascript" src="build/app.min.js" async></script>
+  <!-- Minified scripts -->
+  <script type="text/javascript" src="build/app.min.js" async></script>
 </body>
 
 </html>
