@@ -10,13 +10,17 @@
         border-radius: 3px;
         margin: 50px 0 0;
 
-        min-height: 166px;
+        min-height: 167px;
         width: 100%;
 
         transition: $base-transition;
 
-        &.is-loaded .Weather__forecast__item {
-          opacity: 1;
+        &.is-loaded {
+          width: auto;
+
+          .Weather__forecast__item {
+            opacity: 1;
+          }
         }
 
         @include mobile {
